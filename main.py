@@ -1,8 +1,8 @@
+import os
 import hashlib
 from datetime import date
 from functools import wraps
 from unittest import result
-
 from forms import CommentForm
 from flask_ckeditor import CKEditor
 from flask_bootstrap import Bootstrap5
@@ -15,7 +15,7 @@ from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
 from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
@@ -257,4 +257,4 @@ def all_book_reviews():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5002)
+    app.run(debug=False, port=5002)
