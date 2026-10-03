@@ -1,0 +1,160 @@
+
+.bookshelf {
+    width: 92%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 60px 0 80px;
+}
+
+.bookshelf-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+
+.small-title {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #d678a7;
+    margin-bottom: 8px;
+}
+
+.bookshelf-header h2 {
+    font-family: Georgia, serif;
+    font-size: 42px;
+    color: #33272d;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #80757a;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.add-book-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #d678a7;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 25px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+
+.add-book-button:hover {
+    background-color: #bd5f8d;
+    color: white;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+}
+
+.book-card {
+    background-color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+.book-cover {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+}
+
+.book-info {
+    padding: 22px;
+}
+
+.book-info h3 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    color: #33272d;
+    margin-top: 0;
+    margin-bottom: 6px;
+}
+
+.author {
+    color: #8b7d84;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.book-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+    color: #9a8d93;
+    margin-bottom: 15px;
+}
+
+.rating {
+    color: #b78647;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.review-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #33272d;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 22px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.review-button:hover {
+    background-color: #d678a7;
+
+    color: white;
+}
+
+.no-books {
+    text-align: center;
+    padding: 50px;
+    color: #80757a;
+}
+
+@media (max-width: 600px) {
+
+    .bookshelf {
+        width: 92%;
+        padding: 40px 0;
+    }
+
+    .bookshelf-header h2 {
+        font-size: 34px;
+    }
+
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-cover {
+        height: 420px;
+    }
+}
+@media (max-width: 1100px) {
+
+    .books-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}

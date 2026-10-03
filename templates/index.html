@@ -1,0 +1,99 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url('../static/colorfull.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1 style="font-family: 'Dancing Script', cursive;">Welcome</h1>
+          <span class="subheading">the story never ends here.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-11 col-lg-10 col-xl-9">
+      <!-- Section title -->
+      <div class="text-center mb-5">
+        <h2>Latest Reviews</h2>
+        <p class="text-muted">
+          Books I've read, loved and would recommend.
+        </p>
+      </div>
+
+       <!-- Books -->
+      <div class="row g-4">
+           {% for post in all_posts %}
+           <div class="col-md-6 col-lg-4">
+             <div class="card h-100 shadow-sm border-0">
+               <a href="{{ url_for('show_post', post_id=post.id) }}">
+                 <img src="{{ post.cover_url }}"
+                 class="card-img-top"
+                 alt="{{post.book_title }}"
+                 style="height: 380px; object-fit: cover;"
+                 />
+               </a>
+               <div class="card-body d-flex flex-column">
+                 <h3 class="card-title">
+                   {{ post.book_title }}
+                 </h3>
+
+                 <p class="mb-1 text-muted">
+                   by {{ post.book_author }}
+                 </p>
+
+                 <p class="small text-muted mb-2">
+                   {{ post.genre }}
+                   {% if post.pages %}
+                   . {{post.pages }} pages
+                   {% endif %}
+                 </p>
+
+                 <p class="mb-3">
+                  {{ post.rating}}⭐ / 5⭐️
+              </p>
+
+              <div class="mt-auto">
+                <a
+                  href="{{ url_for('show_post', post_id=post.id) }}"
+                  class="btn btn-outline-dark"
+                >
+                  Read Review
+                </a>
+              </div>
+
+               </div>
+             </div>
+           </div>
+
+        {% else %}
+
+        <div class="text-center">
+          <h3>No books yet 📚</h3>
+          <p class="text-muted">
+            Fist review will appear here.
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+
+
+      <!-- Pager-->
+      <div class="d-flex justify-content-end mb-4">
+        <a class="btn btn-secondary text-uppercase" href="{{ url_for('reading_next')}}">Reading next️🏃🏼‍→</a>
+      </div>
+      <div class="d-flex justify-content-end mb-4">
+        <a class="btn btn-secondary text-uppercase" href="{{ url_for('all_book_reviews')}}">All book reviews</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include "footer.html" %}

@@ -1,0 +1,108 @@
+{% include "header.html" %}
+
+
+<!-- Page Header -->
+<header
+    class="masthead"
+    style="background-image: url('../static/colorfull.jpg')"
+>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>
+                        All Books
+                    </h1>
+                    <span class="subheading">
+                        My reading collection
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Book Shelf -->
+<main class="bookshelf">
+    <!-- Shelf Header -->
+    <div class="bookshelf-header">
+        <p class="small-title">
+            MY LIBRARY
+        </p>
+        <h2>
+            My Book Shelf
+        </h2>
+        <p class="subtitle">
+            Books I have read, reviewed and loved.
+        </p>
+        <!-- Add Book Button -->
+        {% if current_user.is_authenticated and current_user.id == 1 %}
+        <a
+            class="add-book-button"
+            href="{{ url_for('add_new_post') }}"
+        >
+            + Add a Book
+        </a>
+        {% endif %}
+    </div>
+
+    <!-- Books -->
+    <div class="books-grid">
+        {% for post in all_posts %}
+        <div class="book-card">
+            <!-- Cover -->
+            <a
+                href="{{ url_for('show_post', post_id=post.id) }}"
+            >
+                <img
+                    class="book-cover"
+                    src="{{ post.cover_url }}"
+                    alt="{{ post.book_title }}"
+                >
+            </a>
+
+            <!-- Book Information -->
+            <div class="book-info">
+                <h3>
+                    {{ post.book_title }}
+                </h3>
+                <p class="author">
+                    by {{ post.book_author }}
+                </p>
+                <div class="book-meta">
+                    <span>
+                        {{ post.genre }}
+                    </span>
+                    <span>
+                        {{ post.pages }} pages
+                    </span>
+                </div>
+                <p class="rating">
+                    {{ post.rating }} ⭐ / 5
+                </p>
+
+                <a
+                    href="{{ url_for('show_post', post_id=post.id) }}"
+                    class="review-button"
+                >
+                    Read Review
+                </a>
+            </div>
+        </div>
+
+        {% else %}
+        <!-- No books -->
+        <div class="no-books">
+            <h3>
+                No books yet 📚
+            </h3>
+            <p>
+                Add your first book review.
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+
+{% include "footer.html" %}
